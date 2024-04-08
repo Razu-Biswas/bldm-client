@@ -27,7 +27,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 const router = createBrowserRouter([
   {
     path: "/",
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     element: <MainLayout />,
     children: [
       {
@@ -48,7 +48,11 @@ const router = createBrowserRouter([
       },
       {
         path: "funding",
-        element: <PrivateRoute><Funding /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Funding />
+          </PrivateRoute>
+        ),
       },
       {
         path: "searchPage",
@@ -62,11 +66,21 @@ const router = createBrowserRouter([
         path: "blogDetails/:id",
         element: <BlogDetails />,
       },
+      {
+        path: "/registration",
+        errorElement: <ErrorPage />,
+        element: <Registration />,
+      },
+      {
+        path: "/login",
+        errorElement: <ErrorPage />,
+        element: <Login />,
+      },
     ],
   },
   {
     path: "/dashboard",
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     element: (
       <PrivateRoute>
         <DashboardLayout />
@@ -120,16 +134,6 @@ const router = createBrowserRouter([
         element: <AddBlog />,
       },
     ],
-  },
-  {
-    path: "/registration",
-    errorElement: <ErrorPage/>,
-    element: <Registration />,
-  },
-  {
-    path: "/login",
-    errorElement: <ErrorPage/>,
-    element: <Login />,
   },
 ]);
 
